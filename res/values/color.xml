@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="white">#FFFFFF</color>
+    <color name="dark">#000000</color>
+    <color name="red">#FF0000</color>
+	<color name="transparent">#00000000</color>
+	<color name="halftransparent">#80000000</color>
+		<color name="halftransparent2">#50000000</color>
+			<color name="orange">#ff982c</color>
+	
+</resources>

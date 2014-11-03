@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <ImageView
+        android:id="@+id/backgroud_im"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="fitXY" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#20000000" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <include
+            android:id="@+id/result_success"
+            layout="@layout/activity_result"
+            android:visibility="gone" />
+
+        <include
+            android:id="@+id/result_waitting"
+            layout="@layout/activity_waiting"
+            android:visibility="gone" />
+
+        <include
+            android:id="@+id/result_error"
+            layout="@layout/activity_error_page"
+            android:visibility="gone" />
+    </RelativeLayout>
+
+</RelativeLayout>

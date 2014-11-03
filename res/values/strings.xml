@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">百度翻拍</string>
+    <string name="action_settings">Settings</string>
+    <string name="hello_world">Hello world!</string>
+	<string name="pic_reg_fail">图像识别失败</string>
+	<string name="more">\"了解更多\"</string>
+	<string name="again_once">\"再拍一次\"</string>
+		<string name="take_photo">\"确定拍照\"</string>
+</resources>
