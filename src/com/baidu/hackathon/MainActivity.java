@@ -73,7 +73,7 @@ public class MainActivity extends Activity {
 		mLocalBroadcastManager = LocalBroadcastManager.getInstance(this);
 		mVoiceResultReceiver = new VoiceResultReceiver();
 
-		startService(new Intent(this, VoiceWatchDogService.class));
+//		startService(new Intent(this, VoiceWatchDogService.class));
 	}
 
 	private void screenHighLight() {

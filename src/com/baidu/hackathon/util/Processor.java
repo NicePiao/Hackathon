@@ -18,6 +18,7 @@ import com.baidu.hackathon.baike.BaikeUtil;
 import com.baidu.hackathon.ocr.ImgUtil;
 import com.baidu.hackathon.ocr.OcrData;
 import com.baidu.hackathon.ocr.OcrData.OcrRet;
+import com.baidu.hackathon.ocr.google.GoogleOcrUtil;
 import com.baidu.hackathon.ocr.OcrHttpTask;
 import com.baidu.hackathon.trans.TranslateUtil;
 
@@ -70,18 +71,22 @@ public class Processor {
 	 * @throws OcrServerException 
 	 */
 	public List<String> processOcr(Bitmap bitmap) throws OcrServerException {
-		String base64Img = ImgUtil.bitmapToBase64(bitmap);
-		OcrData data = new OcrHttpTask().ocrNet(base64Img);
-		int cnt = 0;
-		while (data != null && data.getErrno() >= -29999
-				&& data.getErrno() <= -20000) {
-			data = new OcrHttpTask().ocrNet(base64Img);
-			cnt++;
-			if (cnt == 5) {
-				throw new OcrServerException();
-			}
-		}
-		return getOcrKeyword(data);
+//		String base64Img = ImgUtil.bitmapToBase64(bitmap);
+//		OcrData data = new OcrHttpTask().ocrNet(base64Img);
+//		int cnt = 0;
+//		while (data != null && data.getErrno() >= -29999
+//				&& data.getErrno() <= -20000) {
+//			data = new OcrHttpTask().ocrNet(base64Img);
+//			cnt++;
+//			if (cnt == 5) {
+//				throw new OcrServerException();
+//			}
+//		}
+//		return getOcrKeyword(data);
+		List<String> words=new ArrayList<String>();
+		words.add(GoogleOcrUtil.ocrBitmap(mContext, GoogleOcrUtil.LANGUAGE_TYPE_CHI_SIM, bitmap));
+		words.add(GoogleOcrUtil.ocrBitmap(mContext, GoogleOcrUtil.LANGUAGE_TYPE_ENG, bitmap));
+		return words;
 	}
 
 	/**
