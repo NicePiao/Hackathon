@@ -9,14 +9,14 @@ import com.googlecode.tesseract.android.TessBaseAPI;
 public class GoogleOcrUtil {
 
 	public static final String LANGUAGE_TYPE_ENG = "eng";
-	public static final String LANGUAGE_TYPE_CHI_SIM = "chi_sim";
+	public static final String LANGUAGE_TYPE_CHI_SIM = "chi";
 
 	public static String ocrBitmap(Context context, String language,
 			Bitmap bitmap) {
 		try {
 			TessBaseAPI baseApi = new TessBaseAPI();
-			baseApi.init(context.getExternalFilesDir(null).getAbsolutePath(),
-					"eng");
+			baseApi.init(context.getExternalFilesDir(language).getAbsolutePath()
+					+ "/", "eng");
 			baseApi.setImage(bitmap);
 			String text = baseApi.getUTF8Text();
 			baseApi.clear();

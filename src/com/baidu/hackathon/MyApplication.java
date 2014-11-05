@@ -18,13 +18,13 @@ public class MyApplication extends Application {
 	}
 
 	private void initGoogleOcr() {
-		copyTessdataToSdcard("chi_sim.traineddata");
-		copyTessdataToSdcard("eng.traineddata");
+		copyTessdataToSdcard1();
+		copyTessdataToSdcard2();
 	}
 
-	private void copyTessdataToSdcard(String name) {
-		File outFile = new File(getExternalFilesDir("tessdata")
-				+ File.separator + name);
+	private void copyTessdataToSdcard1() {
+		File outFile = new File(getExternalFilesDir("eng/tessdata")
+				+ "/eng.traineddata");
 		if (outFile.exists()) {
 			return;
 		}
@@ -32,7 +32,38 @@ public class MyApplication extends Application {
 		BufferedInputStream is = null;
 		BufferedOutputStream os = null;
 		try {
-			is = new BufferedInputStream(getAssets().open("google-ocr-tessdata/"+name));
+			is = new BufferedInputStream(getAssets().open("google-ocr-tessdata/eng/tessdata/eng.traineddata"));
+			os = new BufferedOutputStream(new FileOutputStream(outFile));
+
+			byte[] buffer = new byte[1024];
+			while (is.read(buffer) != -1) {
+				os.write(buffer);
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				is.close();
+				os.close();
+			} catch (Exception e) {
+
+			}
+		}
+
+	}
+	
+	
+	private void copyTessdataToSdcard2() {
+		File outFile = new File(getExternalFilesDir("chi/tessdata")
+				+ "/eng.traineddata");
+		if (outFile.exists()) {
+			return;
+		}
+
+		BufferedInputStream is = null;
+		BufferedOutputStream os = null;
+		try {
+			is = new BufferedInputStream(getAssets().open("google-ocr-tessdata/chi/tessdata/eng.traineddata"));
 			os = new BufferedOutputStream(new FileOutputStream(outFile));
 
 			byte[] buffer = new byte[1024];

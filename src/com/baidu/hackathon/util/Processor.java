@@ -13,6 +13,7 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.text.TextUtils;
+import android.util.Log;
 
 import com.baidu.hackathon.baike.BaikeUtil;
 import com.baidu.hackathon.ocr.ImgUtil;
@@ -84,8 +85,15 @@ public class Processor {
 //		}
 //		return getOcrKeyword(data);
 		List<String> words=new ArrayList<String>();
-		words.add(GoogleOcrUtil.ocrBitmap(mContext, GoogleOcrUtil.LANGUAGE_TYPE_CHI_SIM, bitmap));
-		words.add(GoogleOcrUtil.ocrBitmap(mContext, GoogleOcrUtil.LANGUAGE_TYPE_ENG, bitmap));
+		String a=GoogleOcrUtil.ocrBitmap(mContext, GoogleOcrUtil.LANGUAGE_TYPE_CHI_SIM, bitmap);
+		//String a="";
+		String b=GoogleOcrUtil.ocrBitmap(mContext, GoogleOcrUtil.LANGUAGE_TYPE_ENG, bitmap);
+		words.add("中文----------------");
+		words.add(a);
+		words.add("英文----------------");
+		words.add(b);
+		Log.d("qcw", "chi_sim: "+a);
+		Log.d("qcw", "eng: "+b);
 		return words;
 	}
 

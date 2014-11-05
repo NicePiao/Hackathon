@@ -128,7 +128,11 @@ public class MainActivity extends Activity {
 				try {
 					Processor processor = new Processor(getApplicationContext());
 					List<String> ocrWords = processor.processOcr(bitmap);
-					mResultsMap = processor.getChineseAndBaike(ocrWords);
+					//mResultsMap = processor.getChineseAndBaike(ocrWords);
+					mResultsMap =new LinkedHashMap<String, String>();
+					for(String word:ocrWords){
+						mResultsMap.put(word, "");
+					}
 					mShowBaikeIndex = 0;
 				} catch (Exception e) {
 					if (e instanceof OcrServerException) {
